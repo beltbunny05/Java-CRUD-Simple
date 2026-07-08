@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class HabitTracker {
-    public static void main(String[] args) {
+     static void main(String[] args) {
         System.out.println("HabitTracker");
         int numHabits = 1;
 
