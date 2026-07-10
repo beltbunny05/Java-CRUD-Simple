@@ -5,16 +5,18 @@ import java.util.Scanner;
 public class HabitTracker {
     static void main(String[] args) {
 
-        System.out.println("HabitTracker");
-        System.out.println("Press any button to continue:");
+        System.out.println("HabitTracker by Tedegas");
+
+        boolean flag = true;
 
         Scanner input = new Scanner(System.in);//input setup
 
         List<Habito> habitos = new ArrayList<Habito>();//baby i dont undestand this obama sandwich
         //jk i got it
 
+        int pegarIndex;
 
-        while(!input.next().equals("stop")){
+        do{
             //imports
 
             System.out.println("Digite 1 para criar um habito");
@@ -24,8 +26,8 @@ public class HabitTracker {
             System.out.println("Digite 5 para mudar o nome do seu habito");
 
 
-            switch (input.next()) {
-                case "1":
+            switch (input.nextInt()) {
+                case 1:
                     System.out.println("Novo habito: ");
                     String novoNome = input.next();
 
@@ -39,7 +41,7 @@ public class HabitTracker {
                     System.out.println("Seu recorde é de: " + habito.getRecorde() + " dias.");
                     break;
 
-                case "2":
+                case 2:
                     // var pegar o array e atribuir o getNome de cada um
 
                     for (int i=0; i < habitos.toArray().length; i++){
@@ -48,40 +50,53 @@ public class HabitTracker {
 
                     break;
 
-                case "3":
+                case 3:
                     System.out.println("Escolha um habito para apagar:");
 
                     for (int i=0; i < habitos.toArray().length; i++){
                         System.out.println(habitos.get(i).getNome());
                     }
 
-                    int pegarIndex = input.nextInt();
+                    pegarIndex = input.nextInt();
 
                     habitos.remove(pegarIndex - 1);
 
                     break;
 
-                case "4":
-
+                case 4:
                     System.out.println("...");
 
                     break;
 
-                case "5":
+                case 5:
                     System.out.println("Escolha um habito para editar:");
 
                     for (int i=0; i < habitos.toArray().length; i++){
+                        System.out.print(i + 1 + " ");
                         System.out.println(habitos.get(i).getNome());
                     }
 
-                    int pegarIndex = input.nextInt();
+                    pegarIndex = (input.nextInt() - 1);
+
+                    Habito habitoEditar = habitos.get(pegarIndex);
+                    System.out.print("Digite o novo nome: ");
 
 
+                    String novoNomeAlterado = input.next();//no array habitos pega o nome e troca :) lembrar de deixar bonito
 
-                    habitos.
+                    habitoEditar.setNome(novoNomeAlterado);
 
+                    // no array escolhe esse index acessa e altera o nome (setNome) =>
+
+                    System.out.println("Nome alterado para " + novoNomeAlterado);
+
+                    break;
+
+                case 67: //fim dos tempos user é demente
+                    flag = false;
+                    break;
             }
-        }
+        } while(flag);
         input.close();
     }
 
