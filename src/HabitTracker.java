@@ -100,7 +100,7 @@ public class HabitTracker {
 
                     habitoEditar.setNome(novoNomeAlterado);
 
-                    // no array escolhe esse index acessa e altera o nome (setNome) =>
+                    // var habitorEditar é classe habito onde ele pega o array habitos e puxa no array escolhe esse index acessa e altera o nome (setNome) =>
 
                     System.out.println("Nome alterado para " + novoNomeAlterado);
 
@@ -111,7 +111,8 @@ public class HabitTracker {
                     break;
             }
         } while(flag);
-        input.close();
+        //write on file
+
     }
 
 }
