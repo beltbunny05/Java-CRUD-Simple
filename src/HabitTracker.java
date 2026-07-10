@@ -24,6 +24,7 @@ public class HabitTracker {
             System.out.println("Digite 3 para apagar um habito"); // excluir o habito da memoria
             System.out.println("Digite 4 para check-in");
             System.out.println("Digite 5 para mudar o nome do seu habito");
+            System.out.println("Digite 0 para fechar o programa");
 
 
             switch (input.nextInt()) {
@@ -45,7 +46,7 @@ public class HabitTracker {
                     // var pegar o array e atribuir o getNome de cada um
 
                     for (int i=0; i < habitos.toArray().length; i++){
-                        System.out.println(habitos.get(i).getNome());
+                        System.out.println((i + 1) + ". " + habitos.get(i).getNome());
                     }
 
                     break;
@@ -54,17 +55,30 @@ public class HabitTracker {
                     System.out.println("Escolha um habito para apagar:");
 
                     for (int i=0; i < habitos.toArray().length; i++){
-                        System.out.println(habitos.get(i).getNome());
+                        System.out.println((i + 1) + ". " + habitos.get(i).getNome());
                     }
 
                     pegarIndex = input.nextInt();
 
                     habitos.remove(pegarIndex - 1);
 
+                    System.out.println("Habito apagado com sucesso!");
+
                     break;
 
                 case 4:
-                    System.out.println("...");
+                    System.out.println("Escolha um habito para check-in:");
+                    for (int i=0; i < habitos.toArray().length; i++){
+                        System.out.println((i + 1) + ". " + (habitos.get(i).getNome()) + " sua streak é de " + (habitos.get(i).getDias()) + " dias.");
+                    }
+
+                    pegarIndex = (input.nextInt() - 1);
+
+                    Habito habitoCheckin = habitos.get(pegarIndex);
+
+                    habitoCheckin.setDias(habitoCheckin.getDias() + 1);
+
+                    System.out.println("Parabens pelo check-in agora seu habito " + habitoCheckin.getNome() + " esta com " + habitoCheckin.getDias() + " dias.");
 
                     break;
 
@@ -92,7 +106,7 @@ public class HabitTracker {
 
                     break;
 
-                case 67: //fim dos tempos user é demente
+                case 0: //fim dos tempos
                     flag = false;
                     break;
             }
