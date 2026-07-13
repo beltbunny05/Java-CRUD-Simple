@@ -1,6 +1,6 @@
 import com.google.gson.Gson;
-
-import java.io.FileOutputStream;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,6 +53,7 @@ public class HabitTracker {
                     for (int i=0; i < habitos.toArray().length; i++){
                         System.out.println((i + 1) + ". " + habitos.get(i).getNome());
                     }
+                    // adicionar sistema de recorde para mostrar aqui
 
                     break;
 
@@ -121,12 +122,17 @@ public class HabitTracker {
 
         try(FileWriter writer = new FileWriter("data.json"))  {
             gson.toJson(habitos, writer);
-        }
+        }//toJson usa o parametro do objeto / e oque voce vai fazer com ele
         catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }//metodo de registrar tudo
 
 
+        try(FileReader reader = new FileReader("data.json")){
+            gson.fromJson(reader, new TypeToken<List<Habito>>(){}.getType());
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        } //learn return values
+        //metodo de buscar tudo (deve ser implementado no começo do codigo? :/
     }
-
 }
