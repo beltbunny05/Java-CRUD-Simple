@@ -1,3 +1,8 @@
+import com.google.gson.Gson;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -112,6 +117,15 @@ public class HabitTracker {
             }
         } while(flag);
         //write on file
+        Gson gson = new Gson();
+
+        try(FileWriter writer = new FileWriter("data.json"))  {
+            gson.toJson(habitos, writer);
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
