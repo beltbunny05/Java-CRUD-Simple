@@ -1,9 +1,3 @@
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -121,7 +115,9 @@ public class HabitTracker {
             }
         } while(flag);
         //write on file
+
         saveFile.registrarDados(habitos);
+
         //usar o Habit Repository para escrever
     }
 }
