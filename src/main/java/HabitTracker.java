@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class HabitTracker {
     static void main(String[] args) {
 
-        System.out.println("HabitTracker by Tedegas");
+        System.out.println("HabitTracker");
 
         boolean flag = true;
 
@@ -18,6 +18,9 @@ public class HabitTracker {
 
         List<Habito> habitos = new ArrayList<Habito>();//baby i dont undestand this obama sandwich
         //jk i got it
+
+
+        //puxar HabitRepo para ler o json
 
         int pegarIndex;
 
@@ -118,21 +121,12 @@ public class HabitTracker {
             }
         } while(flag);
         //write on file
-        Gson gson = new Gson();
 
-        try(FileWriter writer = new FileWriter("data.json"))  {
-            gson.toJson(habitos, writer);
-        }//toJson usa o parametro do objeto / e oque voce vai fazer com ele
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }//metodo de registrar tudo
+        //usar o Habit Repository para escrever
 
 
-        try(FileReader reader = new FileReader("data.json")){
-            gson.fromJson(reader, new TypeToken<List<Habito>>(){}.getType());
-        }catch (IOException e) {
-            throw new RuntimeException(e);
-        } //learn return values
-        //metodo de buscar tudo (deve ser implementado no começo do codigo? :/
+
+
+
     }
 }
