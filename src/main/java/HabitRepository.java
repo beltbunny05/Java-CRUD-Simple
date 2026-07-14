@@ -15,13 +15,12 @@ public class HabitRepository {
         try(FileReader reader = new FileReader("data.json")){
             return gson.fromJson(reader, new TypeToken<List<Habito>>(){}.getType());
         }catch (IOException e) {
-            return new ArrayList<>();
+            return new ArrayList<>(); //se nao houver lista no habitos do main ele cria aqui
         } //learn return values
         //metodo de buscar tudo (deve ser implementado no começo do codigo? :/
 
 
     }
-
     public void registrarDados(List<Habito> habitos){
 
         try(FileWriter writer = new FileWriter("data.json"))  {

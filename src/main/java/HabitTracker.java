@@ -10,17 +10,17 @@ import java.util.Scanner;
 public class HabitTracker {
     static void main(String[] args) {
 
+        //puxar HabitRepo para ler o json
+        HabitRepository saveFile = new HabitRepository();
+        //--------------------------------------------------
+
         System.out.println("HabitTracker");
 
         boolean flag = true;
 
         Scanner input = new Scanner(System.in);//input setup
 
-        List<Habito> habitos = new ArrayList<Habito>();//baby i dont undestand this obama sandwich
-        //jk i got it
-
-
-        //puxar HabitRepo para ler o json
+        List<Habito> habitos = saveFile.buscarDados();
 
         int pegarIndex;
 
@@ -121,12 +121,7 @@ public class HabitTracker {
             }
         } while(flag);
         //write on file
-
+        saveFile.registrarDados(habitos);
         //usar o Habit Repository para escrever
-
-
-
-
-
     }
 }
