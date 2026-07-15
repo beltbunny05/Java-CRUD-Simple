@@ -79,14 +79,14 @@ public class HabitTracker {
                         System.out.println((i + 1) + ". " + (habitos.get(i).getNome()) + " sua streak é de " + (habitos.get(i).getDias()) + " dias.");
                     }
 
-
                     pegarIndex = (input.nextInt() - 1);
 
                     Habito habitoCheckin = habitos.get(pegarIndex);
 
+                    //public CheckIn(String habitoID, LocalDate data)
                     CheckIn novoID = new CheckIn(habitoCheckin.getHabitoID(), LocalDate.now()); //puta que o pariu nem fudendo
 
-                    checkins.add(novoID);
+                    checkins.add(novoID); //atributo para guardar na memoria
 
 
                     habitoCheckin.setDias(habitoCheckin.getDias() + 1);//serão movidas para a logica de streak depois

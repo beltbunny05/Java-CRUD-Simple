@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class Habito {
     private String nome;
-    private final String habitoID;
+    private String habitoID;
     private int dias;
     private int recorde;
 
