@@ -1,11 +1,14 @@
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 public class HabitTracker {
     static void main(String[] args) {
 
-        //puxar HabitRepo para ler o json
-        HabitRepository saveFile = new HabitRepository();
+        //puxar Repo para ler o json
+        HabitRepository habitFile = new HabitRepository();
+
+        CheckinRepository checkinFile = new CheckinRepository();
         //--------------------------------------------------
 
         System.out.println("HabitTracker");
@@ -14,7 +17,8 @@ public class HabitTracker {
 
         Scanner input = new Scanner(System.in);//input setup
 
-        List<Habito> habitos = saveFile.buscarDados();
+        List<Habito> habitos = habitFile.buscarDados();
+        List<CheckIn> checkins = checkinFile.buscarDados();
 
         int pegarIndex;
 
@@ -75,11 +79,19 @@ public class HabitTracker {
                         System.out.println((i + 1) + ". " + (habitos.get(i).getNome()) + " sua streak é de " + (habitos.get(i).getDias()) + " dias.");
                     }
 
+
                     pegarIndex = (input.nextInt() - 1);
 
                     Habito habitoCheckin = habitos.get(pegarIndex);
 
-                    habitoCheckin.setDias(habitoCheckin.getDias() + 1);
+                    CheckIn novoID = new CheckIn(habitoCheckin.getHabitoID(), LocalDate.now()); //puta que o pariu nem fudendo
+
+                    checkins.add(novoID);
+
+
+                    habitoCheckin.setDias(habitoCheckin.getDias() + 1);//serão movidas para a logica de streak depois
+                    habitoCheckin.setRecorde(habitoCheckin.getRecorde() + 1); // esse tb
+
 
                     System.out.println("Parabens pelo check-in agora seu habito " + habitoCheckin.getNome() + " esta com " + habitoCheckin.getDias() + " dias.");
 
@@ -116,7 +128,9 @@ public class HabitTracker {
         } while(flag);
         //write on file
 
-        saveFile.registrarDados(habitos);
+        habitFile.registrarDados(habitos);
+        checkinFile.registrarDados(checkins);
+
 
         //usar o Habit Repository para escrever
     }

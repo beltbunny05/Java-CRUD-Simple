@@ -12,7 +12,7 @@ public class HabitRepository {
 
     public List<Habito> buscarDados(){
 
-        try(FileReader reader = new FileReader("data.json")){
+        try(FileReader reader = new FileReader("habitos.json")){
             return gson.fromJson(reader, new TypeToken<List<Habito>>(){}.getType());
         }catch (IOException e) {
             return new ArrayList<>(); //se nao houver lista no habitos do main ele cria aqui
@@ -23,7 +23,7 @@ public class HabitRepository {
     }
     public void registrarDados(List<Habito> habitos){
 
-        try(FileWriter writer = new FileWriter("data.json"))  {
+        try(FileWriter writer = new FileWriter("habitos.json"))  {
             gson.toJson(habitos, writer);
         }//toJson usa o parametro do objeto / e oque voce vai fazer com ele
         catch (IOException e) {
