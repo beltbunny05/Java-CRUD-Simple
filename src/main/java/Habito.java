@@ -1,7 +1,14 @@
+import java.util.UUID;
+
 public class Habito {
     private String nome;
+    private final String habitoID;
     private int dias;
     private int recorde;
+
+    public Habito(){
+        this.habitoID = UUID.randomUUID().toString();
+    }//id unico para novo habito
 
     public void setNome(String nome){
         this.nome = nome;
@@ -15,9 +22,12 @@ public class Habito {
         this.recorde = recorde;
     }
 
+
     public String getNome(){
         return nome;
     }
+
+    public String getHabitoID(){ return habitoID;}
 
     public int getDias(){
         return dias;
@@ -26,4 +36,5 @@ public class Habito {
     public int getRecorde(){
         return  recorde;
     }
+
 }
